@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+    background-color: white  ;
+    color: #2d2c2c;
+}
+
+header, nav{
+    z-index: 10001 !important;
+  }
+  
+  .subtitle{
+    @apply text-red-500 uppercase tracking-wide font-semibold text-lg;
+  }
+  
+   .title{
+    @apply  text-4xl md:text-5xl md:leading-snug font-bold my-2;
+  }
+  
+  .slick-slider{
+    /* background-color: aquamarine; */
+    /* padding-left: 30px; */
+    /* height: 480px !important; */
+    }
+    
+  .slick-prev {
+    z-index: 1;
+    /* background-color: red !important; */
+  } 
+  .slick-next {
+    z-index: 1;
+    /* background-color: red !important; */
+  }
+  
+  .slick-dots li button:before {
+    color: rgb(179, 178, 178) !important;
+    font-size: 10px !important;
+    margin-top: 10px;
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: white !important;
+    /* font-size: 12px !important; */
+  }
+  
+  .heartStar{
+    border-radius: 0px 20px 0px 20px;
+  }
+  
+
+.section-container{
+    @apply max-w-screen-2xl container mx-auto xl:px-24 px-4;
+  }
+  
+  .footer-title{
+    color: black !important ;
+  }
+  
+  .footer-title nav a{
+    z-index: -10001 !important;
+  }
+  
+  .active{
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    color: #39DB4A;
+  }
