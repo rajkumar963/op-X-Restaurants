@@ -1,17 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
-// import "../App.css";
 import logo from "/logo.png";
-import { FiPhoneCall } from "react-icons/fi";
-// import Modal from "./Modal";
+import { FaRegUser } from "react-icons/fa";
+import Modal from "./Modal";
 //import { AuthContext } from "../contexts/AuthProvider";
 // import Profile from "./Profile";
 
 const Navbar = () => {
-  const[isSticky, setSticky] = useState(false);
+  const [isSticky, setSticky] = useState(false);
 
   // const {user} = useContext(AuthContext);
   // console.log(user)
- 
+
   //handle scroll function
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +39,7 @@ const Navbar = () => {
           <summary>Menu</summary>
           <ul className="p-2">
             <li>
-              <a>All</a>
+              <a href="/menu">All</a>
             </li>
             <li>
               <a>Salad</a>
@@ -73,12 +72,16 @@ const Navbar = () => {
     </>
   );
   return (
-    <header className={`max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}>
-      <div className={`navbar xl:px-24 ${
+    <header
+      className={`max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
+    >
+      <div
+        className={`navbar xl:px-24 ${
           isSticky
             ? "shadow-md bg-base transition-all duration-300 ease-in-out"
             : ""
-        }`}>
+        }`}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -157,10 +160,14 @@ const Navbar = () => {
             </div>
           </div>
           {/*btn */}
-          <a className="btn bg-[#27ae60] rounded-full px-6 text-white flex items-center gap-2 ">
-            <FiPhoneCall />
-            Contact
-          </a>
+          <button
+            onClick={() => document.getElementById("my_modal_5").showModal()}
+            className="btn bg-[#27ae60] rounded-full px-5 text-base text-white flex items-center  gap-2 "
+          >
+            <FaRegUser className="bg-[#27ae60] text-white font-bold h-5 w-5" />
+            Login
+          </button>
+         <Modal/>
         </div>
       </div>
     </header>
