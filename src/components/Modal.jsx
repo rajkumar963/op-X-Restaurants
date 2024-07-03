@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"
-//import { AuthContext } from "../contexts/AuthProvider";
+import { AuthContext } from "../contexts/AuthProvider";
 const Modal = () => {
     const {
         register,
@@ -10,8 +10,8 @@ const Modal = () => {
         formState: { errors },
       } = useForm();
 
-    // const {signUpWithGmail, login} = useContext(AuthContext);
-    // const [errorMessage, setErrorMessage] = useState("");
+    const {signUpWithGmail, login} = useContext(AuthContext);
+    const [errorMessage, setErrorMessage] = useState("");
 
     // redirecting to home page or specifig page
     const location = useLocation();
