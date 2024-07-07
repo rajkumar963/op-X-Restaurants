@@ -3,15 +3,15 @@ import logo from "/logo.png";
 import { FaRegUser } from "react-icons/fa";
 import Modal from "./Modal";
 import { AuthContext } from "../contexts/AuthProvider";
-// import Profile from "./Profile";
+import Profile from "./Profile";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isSticky, setSticky] = useState(false);
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
-  const {user} = useContext(AuthContext);
-  console.log(user)
-
-  //handle scroll function
+  // Handle scroll function
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -71,41 +71,44 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
     <header
       className={`max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out`}
     >
       <div
         className={`navbar xl:px-24 ${
-          isSticky
-            ? "shadow-md bg-base transition-all duration-300 ease-in-out"
-            : ""
+          isSticky ? "shadow-md bg-base transition-all duration-300 ease-in-out" : ""
         }`}
       >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <button onClick={() => setIsOpen(!isOpen)}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </button>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              {navItems}
-            </ul>
+            {isOpen && (
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                {navItems}
+              </ul>
+            )}
           </div>
           <a href="/" className="w-[100px]">
             <img src={logo} alt="logo" />
@@ -113,12 +116,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            {/*Navbar menu */}
             {navItems}
           </ul>
         </div>
         <div className="navbar-end">
-          {/*Search btn */}
           <button className="btn btn-ghost btn-circle hidden lg:flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +136,6 @@ const Navbar = () => {
               />
             </svg>
           </button>
-          {/*card item*/}
           <div
             tabIndex={0}
             role="button"
@@ -159,15 +159,18 @@ const Navbar = () => {
               <span className="badge badge-sm indicator-item">8</span>
             </div>
           </div>
-          {/*btn */}
-          <button
-            onClick={() => document.getElementById("my_modal_5").showModal()}
-            className="btn bg-[#27ae60] rounded-full px-5 text-base text-white flex items-center  gap-2 "
-          >
-            <FaRegUser className="bg-[#27ae60] text-white font-bold h-5 w-5" />
-            Login
-          </button>
-         <Modal/>
+          {user ? (
+            <Profile user={user} />
+          ) : (
+            <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+              className="btn bg-[#27ae60] rounded-full px-5 text-base text-white flex items-center gap-2"
+            >
+              <FaRegUser className="bg-[#27ae60] text-white font-bold h-5 w-5" />
+              Login
+            </button>
+          )}
+          <Modal />
         </div>
       </div>
     </header>

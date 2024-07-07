@@ -15,9 +15,9 @@ const Signup = () => {
 
       const {createUser, login} = useContext(AuthContext);
           // redirecting to home page or specifig page
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from?.pathname || "/";
+      const location = useLocation();
+      const navigate = useNavigate();
+      const from = location.state?.from?.pathname || "/";
 
       const onSubmit = (data) => {
         const email = data.email;
@@ -74,6 +74,9 @@ const Signup = () => {
             </div>
 
             {/* error */}
+            {/* {
+            errorMessage ? <p className="text-red-500 text-xs italic">{errorMessage}</p> : ""
+            } */}
 
             {/* login btn */}
             <div className="form-control mt-2">
